@@ -4,7 +4,7 @@ version = "1.0.0"
 authors = []
 
 [addresses]
-
+mpc_contract = "4d50f43a3b7790d1cc4bfb00adfb16d7a46ac55ee3de30af757910215a533e88"
 [dev-addresses]
 
 [dependencies.AptosFramework]
