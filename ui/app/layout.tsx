@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { NavBar } from "@/components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,7 +42,8 @@ const neueMontreal = localFont({
 
 export const metadata: Metadata = {
   title: "AptWeaver",
-  description: "Controlling Ethereum and bitcoin wallets only by your aptos accounts truly keyless",
+  description:
+    "Controlling Ethereum and bitcoin wallets only by your aptos accounts truly keyless",
 };
 
 export default function RootLayout({
@@ -60,7 +62,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="container mx-auto">
+            <NavBar />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
