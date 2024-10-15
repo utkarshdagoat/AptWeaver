@@ -31,8 +31,10 @@ const buttonVariants = cva(
           "relative after:absolute after:bg-primary after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-left after:scale-x-100 hover:after:origin-bottom-right hover:after:scale-x-0 after:transition-transform after:ease-in-out after:duration-300",
         linkHover2:
           "relative after:absolute after:bg-primary after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300",
-        linkActive: 
+        linkActive:
           "relative after:absolute after:bg-primary after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-left after:scale-x-100 ",
+        metal:
+          "bg-gradient-to-tr from-muted via-card to-accent border-b border-t rounded-full hover:brightness-90",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -107,4 +109,3 @@ const Button = React.forwardRef<
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
-        

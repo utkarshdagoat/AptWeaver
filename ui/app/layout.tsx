@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavBar } from "@/components/navbar";
+import { Toaster } from "@/components/ui/toaster";
+import { AutoConnectProvider } from "@/components/auto-connect-provider";
+import { WalletProvider } from "@/components/wallet-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -62,10 +65,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="container mx-auto">
-            <NavBar />
-            {children}
-          </div>
+          <AutoConnectProvider>
+            <WalletProvider>
+              <div className="container mx-auto">
+                <NavBar />
+                {children}
+              </div>
+            </WalletProvider>
+          </AutoConnectProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
