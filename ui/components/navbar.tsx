@@ -31,9 +31,7 @@ export function NavBar() {
               <Button
                 size="sm"
                 className={`text-accent-foreground ${
-                  activeIndex === index
-                    ? "brightness-110"
-                    : ""
+                  activeIndex === index ? "brightness-110" : ""
                 }`}
                 variant={activeIndex === index ? "linkActive" : "linkHover2"}
                 onClick={() => setActiveIndex(index)}
@@ -44,7 +42,9 @@ export function NavBar() {
           ))}
         </div>
       </div>
-      <WalletSelector />
+      <div className="hidden md:flex">
+        <WalletSelector />
+      </div>
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="md:hidden float-end">
@@ -64,6 +64,8 @@ export function NavBar() {
                 {link.label}
               </Link>
             ))}
+            <div className="w-full border-t mt-4 mb-5"></div>
+            <WalletSelector />
           </div>
         </SheetContent>
       </Sheet>

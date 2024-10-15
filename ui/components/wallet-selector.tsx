@@ -71,7 +71,7 @@ export function WalletSelector(walletSortingOptions: WalletSortingOptions) {
   return connected ? (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button>
+        <Button variant={'metal'}>
           {account?.ansName || truncateAddress(account?.address) || "Unknown"}
         </Button>
       </DropdownMenuTrigger>
