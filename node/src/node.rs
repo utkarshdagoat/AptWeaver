@@ -90,28 +90,28 @@ impl Party1Node {
             .expect("Failed to add request");
         self.latest_request_index = request;
     }
-    pub fn start_new_request(&mut self, derivation_path: &str, message: &str) {
-        let new_request_id = self
-            .pending_requests
-            .remove()
-            .expect("Failed to remove request");
-        let derivation_path_scalar = ECScalar::from(&BigInt::from_hex(derivation_path));
-        let msg = BigInt::from_hex(message);
-        let new_ec_keypair = self.ec_keypair.add_scalar(&derivation_path_scalar);
-        let keypair = PaillierKeyPair::generate_keypair_and_encrypted_share(&new_ec_keypair);
-        let (eph_party_one_first_message, eph_ec_key_pair_party1) = EphKeyGenFirstMsg::create();
-        let party1_private = Party1Private::set_private_key(&new_ec_keypair, &keypair);
-        let party1_state = PartyOneState {
-            ec_key_pair: new_ec_keypair,
-            paillier_keypair: keypair,
-            ephemeral_keygen_first_msg: eph_party_one_first_message,
-            private_key: party1_private,
-            commitments_verified: false,
-            message: msg,
-            eph_key_pair_first:eph_ec_key_pair_party1
-        };
-        self.client_state.insert(new_request_id, party1_state);
-    }
+    // pub fn start_new_request(&mut self, derivation_path: &str, message: &str) {
+    //     let new_request_id = self
+    //         .pending_requests
+    //         .remove()
+    //         .expect("Failed to remove request");
+    //     let derivation_path_scalar = ECScalar::from(&BigInt::from_hex(derivation_path));
+    //     let msg = BigInt::from_hex(message);
+    //     let new_ec_keypair = self.ec_keypair.add_scalar(&derivation_path_scalar);
+    //     let keypair = PaillierKeyPair::generate_keypair_and_encrypted_share(&new_ec_keypair);
+    //     let (eph_party_one_first_message, eph_ec_key_pair_party1) = EphKeyGenFirstMsg::create();
+    //     let party1_private = Party1Private::set_private_key(&new_ec_keypair, &keypair);
+    //     let party1_state = PartyOneState {
+    //         ec_key_pair: new_ec_keypair,
+    //         paillier_keypair: keypair,
+    //         ephemeral_keygen_first_msg: eph_party_one_first_message,
+    //         private_key: party1_private,
+    //         commitments_verified: false,
+    //         message: msg,
+    //         eph_key_pair_first:eph_ec_key_pair_party1
+    //     };
+    //     self.client_state.insert(new_request_id, party1_state);
+    // }
 
     fn verify_commitments(&mut self, data: VerifyCommitmentsData) {
         let party1_state = self
