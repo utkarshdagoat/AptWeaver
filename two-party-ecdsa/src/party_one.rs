@@ -17,7 +17,7 @@ use crate::paillier::Paillier;
 use crate::paillier::{Decrypt, EncryptWithChosenRandomness, KeyGeneration};
 use crate::paillier::{DecryptionKey, EncryptionKey, Randomness, RawCiphertext, RawPlaintext};
 use crate::zk_paillier::zkproofs::{NICorrectKeyProof, RangeProofNi};
-use crate::Secp256k1Point;
+use crate::{Secp256k1Point, Secp256k1Scalar};
 use secp256k1::Secp256k1;
 use serde::{Deserialize, Serialize};
 use std::cmp;
@@ -230,14 +230,21 @@ pub struct EcKeyPair {
 }
 
 impl EcKeyPair {
-    pub fn add_scalar(&mut self, scalar: &FE) -> EcKeyPair{
+    pub fn add_scalar(&mut self, scalar: &FE) -> (EcKeyPair,FE){
         let secret_share = self.secret_share + scalar;
+        self.secret_share = secret_share;
+
         let gen = Secp256k1Point::generator();
         let public_share = gen.scalar_mul(&self.secret_share.get_element());
-        EcKeyPair {
-            public_share,
+
+        self.public_share = public_share;
+        (
+            EcKeyPair {
+                public_share,
+                secret_share,
+            },
             secret_share,
-        }
+        )
     }
 }
 #[derive(Clone, Debug, Serialize, Deserialize)]
