@@ -17,7 +17,7 @@ const Accounts = () => {
   const { addresses, activeAddressIndex, setActiveAddressIndex } =
     useDashboardStore();
   return (
-    <div className="flex flex-row border-b gap-4 pb-2 lg:flex-col lg:w-[200px] lg:border-r lg:border-b-0 lg:pr-2 lg:pb-0">
+    <div className="flex flex-row gap-4 pb-2 lg:flex-col lg:w-[200px] lg:border-b-0 lg:pr-2 lg:pb-0">
       <NewWallet />
       <div className="flex-1 flex flex-row gap-4  lg:gap-2 lg:flex-col overflow-auto no-scrollbar">
         {addresses.map((address, index) => (
