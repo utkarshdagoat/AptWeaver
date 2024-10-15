@@ -69,7 +69,7 @@ const NewWallet = () => {
           {windowWidth > 1024 && "New Wallet"}
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="bg-card">
         <form onSubmit={createNewWallet} className="w-full space-y-4">
           <DialogTitle className="mb-2">New Wallet</DialogTitle>
           <div>

@@ -9,7 +9,7 @@ const Portfolio = () => {
     <div>
       <Overview />
       <Tabs defaultValue="tokens" className="w-full mt-4">
-        <TabsList className="grid w-[400px] grid-cols-2" variant={"outline"}>
+        <TabsList className="grid max-w-[400px] grid-cols-2" variant={"outline"}>
           <TabsTrigger value="tokens" className="text-base" variant={"outline"}>
             Tokens
           </TabsTrigger>

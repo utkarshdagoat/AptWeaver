@@ -34,7 +34,7 @@ export function AssetChart() {
   }, [assets]);
 
   return (
-    <Card className="w-full h-fit lg:h-full lg:w-[500px] bg-gradient-to-br from-accent/40 via-card to-muted/40 to-[120%]">
+    <Card className="w-full hidden xs:block xs:h-fit lg:h-full lg:max-w-[480px] bg-gradient-to-br from-accent/40 via-card to-muted/40 to-[120%]">
       <CardHeader className={`${!isLoading && 'pb-0'}`}>
         <CardDescription className="font-semibold">
           Asset Overview
