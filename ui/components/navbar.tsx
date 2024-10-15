@@ -22,7 +22,7 @@ export function NavBar() {
         <Link href="#" className="flex items-center gap-2" prefetch={false}>
           <WaveSawtooth weight="regular" className="h-6 w-6 text-primary" />
           <span className="text-xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-primary-foreground to-muted-foreground tracking-tight">
-            AptWeave
+            AptWeaver
           </span>
         </Link>
         <div className="hidden md:flex gap-2">
