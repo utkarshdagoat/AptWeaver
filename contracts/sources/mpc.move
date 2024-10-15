@@ -1,16 +1,16 @@
 module mpc_contract::mpc_contract {
     use std::vector;
     use std::simple_map::SimpleMap;
-    use std::string::String;
     struct InitializingContractState has store {
         threshold: u32
     }
+    use std::string::String;
 
     struct Candidates has store {
         pubkey: address,
         cipher_key: vector<u8>,
         sign_pk: vector<u8>,
-        ip_address: String
+        url:String
     }
 
     struct RunningContractState has store {
