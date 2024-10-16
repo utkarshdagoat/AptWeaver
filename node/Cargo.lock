@@ -4975,6 +4975,7 @@ checksum = "b93853da6d84c2e3c7d730d6473e8817692dd89be387eb01b94d7f108ecb5b8c"
 name = "node"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "aptos-sdk",
  "bs58",
  "ethers-core",

@@ -73,7 +73,6 @@ module mpc_contract::mpc_contract {
 
     public entry fun request_join(
         node: &signer,
-        path: String,
     ) {
         let proposer_addr = signer::address_of(node);
         assert!(exists<Mpc>(@mpc_contract), 10);

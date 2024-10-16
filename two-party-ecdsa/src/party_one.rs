@@ -230,7 +230,7 @@ pub struct EcKeyPair {
 }
 
 impl EcKeyPair {
-    pub fn add_scalar(&mut self, scalar: &FE) -> (EcKeyPair,FE){
+    pub fn add_scalar(&mut self, scalar: &FE) -> EcKeyPair {
         let secret_share = self.secret_share + scalar;
         self.secret_share = secret_share;
 
@@ -238,13 +238,10 @@ impl EcKeyPair {
         let public_share = gen.scalar_mul(&self.secret_share.get_element());
 
         self.public_share = public_share;
-        (
-            EcKeyPair {
-                public_share,
-                secret_share,
-            },
+        EcKeyPair {
+            public_share,
             secret_share,
-        )
+        }
     }
 }
 #[derive(Clone, Debug, Serialize, Deserialize)]
