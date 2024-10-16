@@ -26,6 +26,9 @@ importers:
       '@okwallet/aptos-wallet-adapter':
         specifier: ^0.0.7
         version: 0.0.7(@aptos-labs/wallet-adapter-core@4.18.0(@aptos-labs/ts-sdk@1.29.1)(@mizuwallet-sdk/core@1.3.2(@aptos-labs/ts-sdk@1.29.1)(graphql-request@7.1.0(graphql@16.9.0)))(@mizuwallet-sdk/protocol@0.0.1)(@telegram-apps/bridge@1.2.1)(@wallet-standard/core@1.0.3)(aptos@1.21.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10))(aptos@1.21.0)
+      '@paypal/react-paypal-js':
+        specifier: ^8.7.0
+        version: 8.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@phosphor-icons/react':
         specifier: ^2.1.7
         version: 2.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -484,6 +487,18 @@ packages:
     peerDependencies:
       '@aptos-labs/wallet-adapter-core': 3.5.0
       aptos: ^1.21.0
+
+  '@paypal/paypal-js@8.1.2':
+    resolution: {integrity: sha512-EKshGSWRxLWU1NyPB9P1TiOkPajVmpTo5I9HuZKoSv8y2uk0XIskXqMkAJ/Y9qAg9iJyP102Jb/atX63tTy24w==}
+
+  '@paypal/react-paypal-js@8.7.0':
+    resolution: {integrity: sha512-KW4EdL8hlLWBY6f9l1csxQ8Szh5bhMFLxl+DV29jHNwdlM6z3s+w4LZQ7GtgHktSrlNBHgblNNvwLNpcDtsZgg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@paypal/sdk-constants@1.0.150':
+    resolution: {integrity: sha512-ETm/mtiTBw4gHPdKo3GXzSQyXfZKevSg+ujfEvZbLT9gCc/YFmTBnWDroqmzOeuSXnf2Ll4bBSp3xbr47NQbUQ==}
 
   '@pedrouid/environment@1.0.1':
     resolution: {integrity: sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==}
@@ -1855,6 +1870,9 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  hi-base32@0.5.1:
+    resolution: {integrity: sha512-EmBBpvdYh/4XxsnUybsPag6VikPYnN30td+vQk+GI3qpahVEG9+gTkG0aXVxTjBqQ5T6ijbWIu77O+C5WFWsnA==}
+
   http-cache-semantics@4.1.1:
     resolution: {integrity: sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==}
 
@@ -2428,6 +2446,9 @@ packages:
 
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
+
+  promise-polyfill@8.3.0:
+    resolution: {integrity: sha512-H5oELycFml5yto/atYqmjyigJoAo3+OXwolYiH7OfQuYlAqhxNvTfiNMbV9hsC6Yp83yE5r2KTVmtrG6R9i6Pg==}
 
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
@@ -3470,6 +3491,21 @@ snapshots:
     dependencies:
       '@aptos-labs/wallet-adapter-core': 4.18.0(@aptos-labs/ts-sdk@1.29.1)(@mizuwallet-sdk/core@1.3.2(@aptos-labs/ts-sdk@1.29.1)(graphql-request@7.1.0(graphql@16.9.0)))(@mizuwallet-sdk/protocol@0.0.1)(@telegram-apps/bridge@1.2.1)(@wallet-standard/core@1.0.3)(aptos@1.21.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       aptos: 1.21.0
+
+  '@paypal/paypal-js@8.1.2':
+    dependencies:
+      promise-polyfill: 8.3.0
+
+  '@paypal/react-paypal-js@8.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@paypal/paypal-js': 8.1.2
+      '@paypal/sdk-constants': 1.0.150
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  '@paypal/sdk-constants@1.0.150':
+    dependencies:
+      hi-base32: 0.5.1
 
   '@pedrouid/environment@1.0.1': {}
 
@@ -5093,6 +5129,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  hi-base32@0.5.1: {}
+
   http-cache-semantics@4.1.1: {}
 
   http2-wrapper@1.0.3:
@@ -5619,6 +5657,8 @@ snapshots:
   prelude-ls@1.2.1: {}
 
   process-nextick-args@2.0.1: {}
+
+  promise-polyfill@8.3.0: {}
 
   prop-types@15.8.1:
     dependencies:
