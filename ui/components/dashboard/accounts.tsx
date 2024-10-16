@@ -17,7 +17,7 @@ const Accounts = () => {
   const { addresses, activeAddressIndex, setActiveAddressIndex } =
     useDashboardStore();
   return (
-    <div className="flex flex-row border-b gap-4 pb-2 lg:flex-col lg:w-[200px] lg:border-r lg:border-b-0 lg:pr-2 lg:pb-0">
+    <div className="flex flex-row gap-4 pb-2 lg:flex-col lg:w-[200px] lg:border-b-0 lg:pr-2 lg:pb-0">
       <NewWallet />
       <div className="flex-1 flex flex-row gap-4  lg:gap-2 lg:flex-col overflow-auto no-scrollbar">
         {addresses.map((address, index) => (
@@ -28,7 +28,7 @@ const Accounts = () => {
             onClick={() => setActiveAddressIndex(index)}
             variant={index === activeAddressIndex ? "shine" : "secondary"}
           >
-            {address}
+            <CopyAddress className="text-sm" address={address} />
           </Button>
         ))}
       </div>
@@ -69,7 +69,7 @@ const NewWallet = () => {
           {windowWidth > 1024 && "New Wallet"}
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="bg-card">
         <form onSubmit={createNewWallet} className="w-full space-y-4">
           <DialogTitle className="mb-2">New Wallet</DialogTitle>
           <div>
@@ -97,5 +97,43 @@ const NewWallet = () => {
     </Dialog>
   );
 };
+
+import { Copy } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
+const CopyAddress = ({
+  address,
+  className,
+  description,
+  iconPlacement = 'right',
+}: {
+  address: string;
+  className?: string;
+  description?: string;
+  iconPlacement?: 'left' | 'right';
+}) => {
+  const truncatedAddress = `${address.slice(0, 6)}...${address.slice(-4)}`;
+  const { toast } = useToast();
+
+  return (
+    <p
+      className={`text-lg text-accent-foreground inline-flex ${iconPlacement === 'left' && 'flex-row-reverse'} items-center gap-2 ${className}`}
+    >
+      {truncatedAddress}{" "}
+      <span
+        className="transition-all duration-300 hover:cursor-pointer hover:text-foreground"
+        onClick={() => {
+          navigator.clipboard.writeText(address);
+          toast({
+            description: description || "Address copied to clipboard",
+          });
+        }}
+      >
+        <Copy className="w-4 h-4" />
+      </span>
+    </p>
+  );
+};
+
 
 export default Accounts;
