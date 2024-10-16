@@ -122,7 +122,7 @@ function ConnectWalletDialog({
   const hasAptosConnectWallets = !!aptosConnectWallets.length;
 
   return (
-    <DialogContent className="max-h-screen overflow-auto bg-gradient-to-br from-accent/50 via-card to-accent/30">
+    <DialogContent className="max-h-screen overflow-auto backdrop-blur-md bg-gradient-to-br from-accent/50 via-card to-accent/30">
       <AboutAptosConnect renderEducationScreen={renderEducationScreen}>
         <DialogHeader>
           <DialogTitle className="flex flex-col text-center leading-snug">

@@ -6,12 +6,10 @@ import TokenSelector from "./token-selector";
 
 const TokenInput = ({ type }: TokenBoxVariant) => {
   const {
-    fromChain,
-    toChain,
-    fromAmount,
-    setFromAmount,
-    toAmount,
-    setToAmount,
+    fromAmountUSD,
+    toAmountAPT,
+    setFromAmountUSD,
+    setToAmountAPT,
   } = useSwapStore();
 
   const [error, setError] = useState<boolean>(false);
@@ -22,11 +20,10 @@ const TokenInput = ({ type }: TokenBoxVariant) => {
     <div className="flex gap-1 items-center">
       {type === "from" ? (
         <AmountInput
-          placeholder={fromChain ? "0.00" : "--"}
+          placeholder={fromAmountUSD ? "0.00" : "--"}
           type="number"
-          disabled={!fromChain}
-          onChange={(e) => setFromAmount(e.target.value)}
-          value={fromAmount}
+          onChange={(e) => setFromAmountUSD(Number(e.target.value))}
+          value={fromAmountUSD}
           error={error}
           errorMessage={errorMessage}
         />
@@ -34,13 +31,13 @@ const TokenInput = ({ type }: TokenBoxVariant) => {
         <SwapAmountSkeleton />
       ) : (
         <AmountInput
-          placeholder={toChain ? "0.00" : "--"}
-          disabled={!toChain}
-          value={toAmount === "--" ? "--" : Number(toAmount).toFixed(4)}
+          placeholder={"--"}
+          disabled={!fromAmountUSD}
+          value={toAmountAPT === 0 ? "--" : Number(toAmountAPT).toFixed(4)}
           readOnly
         />
       )}
-      <TokenSelector type={type} />
+      {/* <TokenSelector type={type} /> */}
     </div>
   );
 };

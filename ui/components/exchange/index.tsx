@@ -20,26 +20,11 @@ import { useState } from "react";
 import { CopyAddress } from "../dashboard/portfolio/commons";
 
 const Swap = () => {
-  const {
-    fromChain,
-    fromAmount,
-    fromToken,
-    toChain,
-    toToken,
-    walletConnected,
-    activeAddress,
-    setActiveAddress,
-    swapEnabled,
-    setSwapEnabled,
-    isLoading,
-    setIsLoading,
-  } = useSwapStore();
-
-  const { toast } = useToast();
+  const { walletConnected, swapEnabled } = useSwapStore();
 
   const [txHash, setTxHash] = useState<string | null>(null);
 
-  const handleSwapClicked = async () => {
+  const handlePayment = async () => {
     // TODO: Write handle swap logic
   };
 
@@ -49,11 +34,7 @@ const Swap = () => {
         className={`z-50 bg transition-all bg-gradient-to-bl from-accent/40 from-[-20%] via-card to-muted/40 duration-500`}
       >
         <CardHeader className="flex flex-row items-center mb-2 justify-between">
-          <CardTitle className="font-bold">Swap</CardTitle>
-          <div className="space-x-2">
-            <Settings />
-            <TransactionHistory />
-          </div>
+          <CardTitle className="font-bold">Get <span className="underline underline-offset-4 decoration-primary bg-clip-text text-transparent bg-gradient-to-tr from-primary-foreground to-muted-foreground">APT</span> Tokens</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <FromAddress />
@@ -73,7 +54,7 @@ const Swap = () => {
               iconPlacement="right"
               Icon={ArrowUpDown}
               disabled={!swapEnabled}
-              onClick={handleSwapClicked}
+              onClick={handlePayment}
             >
               Swap
             </Button>
